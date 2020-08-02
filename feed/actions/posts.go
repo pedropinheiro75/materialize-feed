@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"feed/fanout"
 	"feed/models"
 	"fmt"
 	"github.com/gobuffalo/buffalo"
@@ -105,6 +106,8 @@ func (v PostsResource) Create(c buffalo.Context) error {
 			return c.Render(http.StatusUnprocessableEntity, r.JSON(verrs))
 		}).Respond(c)
 	}
+
+	_, _ = fanout.New().FanOutWrite(c, *post)
 
 	return responder.Wants("json", func(c buffalo.Context) error {
 		return c.Render(http.StatusCreated, r.JSON(post))
