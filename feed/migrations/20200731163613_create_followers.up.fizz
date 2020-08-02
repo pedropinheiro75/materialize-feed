@@ -1,0 +1,18 @@
+create_table("followers") {
+	t.Column("id", "uuid", {primary: true})
+	t.Column("user_id", "uuid", {})
+	t.Column("follower_user_id", "uuid", {})
+	t.Timestamps()
+}
+
+add_foreign_key("followers", "follower_user_id", {"users": ["id"]}, {
+    "name": "follower_user_id_FK",
+    "on_delete": "CASCADE",
+    "on_update": "CASCADE",
+})
+
+add_foreign_key("followers", "user_id", {"users": ["id"]}, {
+    "name": "user_id_FK",
+    "on_delete": "CASCADE",
+    "on_update": "CASCADE",
+})

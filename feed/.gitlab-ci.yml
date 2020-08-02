@@ -1,0 +1,34 @@
+before_script:
+  - apt-get update && apt-get install -y postgresql-client
+  - ln -s /builds /go/src/$(echo "feed" | cut -d "/" -f1)
+  - cd /go/src/feed
+  - mkdir -p public/assets
+  - go get -u github.com/gobuffalo/buffalo/buffalo
+  - go mod download
+  - export PATH="$PATH:$GOPATH/bin"
+
+stages:
+  - test
+
+.test-vars: &test-vars
+  variables:
+    GO_ENV: "test"
+    POSTGRES_DB: "feed_test"
+    TEST_DATABASE_URL: "postgres://postgres:postgres@postgres:5432/feed_test?sslmode=disable"
+
+# Golang version choice helper
+.use-golang-image: &use-golang-latest
+  image: golang:latest
+
+.use-golang-image: &use-golang-1-8
+  image: golang:1.8
+
+test:
+  # Change to "<<: *use-golang-latest" to use the latest Go version
+  <<: *use-golang-1-8
+  <<: *test-vars
+  stage: test
+  services:
+    - postgres:latest
+  script:
+    - buffalo test

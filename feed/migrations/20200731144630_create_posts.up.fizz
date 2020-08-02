@@ -1,0 +1,13 @@
+create_table("posts") {
+	t.Column("id", "uuid", {primary: true})
+	t.Column("user_id", "uuid", {})
+	t.Column("title", "string", {})
+	t.Column("description", "string", {})
+	t.Timestamps()
+}
+
+add_foreign_key("posts", "user_id", {"users": ["id"]}, {
+    "name": "user_id_FK",
+    "on_delete": "CASCADE",
+    "on_update": "CASCADE",
+})

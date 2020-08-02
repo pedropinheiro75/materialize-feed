@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "7a6204c9-2999-4131-9f0a-b490555e0082",
+		"name": "materialize-feed",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Posts | Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"02f2f676-4179-4ff3-93ba-7b4701a3b774\",\n    \"title\": \"Yoga is awesome2\",\n    \"description\": \"All yoga styles can help balance your body, mind, and spirit, but they achieve it in various ways. Yoga is a great way to stretch and strengthen your body, focus your mind, and relax your spirit.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7575/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7575",
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Posts | Find by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7575/posts/a2220c55-16e4-453c-b812-d2087f734cd6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7575",
+							"path": [
+								"posts",
+								"a2220c55-16e4-453c-b812-d2087f734cd6"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Users | Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Pedro Pinheiro\",\n    \"picture\": \"https://pedrohpinheiro.com/profile_picture.png\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7575/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7575",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Followers",
+			"item": [
+				{
+					"name": "Followers | Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"follower_user_id\": \"5a00446a-8b4c-4a86-9b7a-8108b255a328\",\n    \"user_id\": \"02f2f676-4179-4ff3-93ba-7b4701a3b774\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7575/followers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7575",
+							"path": [
+								"followers"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "22c395b1-ee8a-43df-9309-77e98acf65db",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "21c08a78-5c93-43ef-a0b5-871e9599fac8",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

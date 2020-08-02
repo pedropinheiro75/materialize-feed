@@ -1,0 +1,3 @@
+drop_table("posts")
+
+drop_foreign_key("posts", "user_id_FK", {"if_exists": true})
